@@ -8,13 +8,13 @@
 Summary:	ExtUtils::CChecker - configure-time utilities for using C headers, libraries, or OS features
 Summary(pl.UTF-8):	ExtUtils::CChecker - sprawdzanie nagłówków C, bibliotek i cech OS w czasie konfiguracji
 Name:		perl-ExtUtils-CChecker
-Version:	0.06
+Version:	0.07
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-authors/id/P/PE/PEVANS/ExtUtils-CChecker-%{version}.tar.gz
-# Source0-md5:	18d0a1a50afd5a8185c03cbed9098e4e
+# Source0-md5:	d44dc0670fe26be22a05faea015639e0
 URL:		http://search.cpan.org/dist/ExtUtils-CChecker/
 BuildRequires:	perl-Module-Build
 BuildRequires:	perl-devel >= 1:5.8.0
