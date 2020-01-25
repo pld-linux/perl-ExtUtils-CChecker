@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_without	tests		# do not perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define	pdir	ExtUtils
 %define	pnam	CChecker
 Summary:	ExtUtils::CChecker - configure-time utilities for using C headers, libraries, or OS features
