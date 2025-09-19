@@ -1,24 +1,26 @@
 #
 # Conditional build:
-%bcond_without	tests		# do not perform "make test"
+%bcond_without	tests	# unit tests
 #
 %define	pdir	ExtUtils
 %define	pnam	CChecker
 Summary:	ExtUtils::CChecker - configure-time utilities for using C headers, libraries, or OS features
 Summary(pl.UTF-8):	ExtUtils::CChecker - sprawdzanie nagłówków C, bibliotek i cech OS w czasie konfiguracji
 Name:		perl-ExtUtils-CChecker
-Version:	0.11
+Version:	0.12
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-authors/id/P/PE/PEVANS/ExtUtils-CChecker-%{version}.tar.gz
-# Source0-md5:	6c40b0aa26907aed861288808dee755c
+Source0:	https://www.cpan.org/modules/by-module/ExtUtils/ExtUtils-CChecker-%{version}.tar.gz
+# Source0-md5:	113116cb9c66f40f4c376cea0a434e42
 URL:		https://metacpan.org/dist/ExtUtils-CChecker
 BuildRequires:	perl-Module-Build >= 0.4004
-BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	perl-devel >= 1:5.14.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 %if %{with tests}
+BuildRequires:	perl(Test2::V0)
 BuildRequires:	perl-Test-Fatal
 BuildRequires:	perl-Test-Pod >= 1.00
 BuildRequires:	perl-Test-Simple >= 0.88
@@ -58,8 +60,8 @@ lub katalogu z plikami nagłówkowymi do użycia.
 
 %build
 %{__perl} Build.PL \
-	destdir=$RPM_BUILD_ROOT \
-	installdirs=vendor
+	--installdirs=vendor
+
 ./Build
 
 %{?with_tests:./Build test}
@@ -67,7 +69,8 @@ lub katalogu z plikami nagłówkowymi do użycia.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install
+./Build install \
+	destdir=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
